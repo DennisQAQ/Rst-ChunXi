@@ -6,18 +6,23 @@ import com.ChunXi.constant.StatusConstant;
 import com.ChunXi.context.BaseContext;
 import com.ChunXi.dto.EmployeeDTO;
 import com.ChunXi.dto.EmployeeLoginDTO;
+import com.ChunXi.dto.EmployeePageQueryDTO;
 import com.ChunXi.entity.Employee;
 import com.ChunXi.exception.AccountLockedException;
 import com.ChunXi.exception.AccountNotFoundException;
 import com.ChunXi.exception.PasswordErrorException;
 import com.ChunXi.mapper.EmployeeMapper;
+import com.ChunXi.result.PageResult;
 import com.ChunXi.service.EmployeeService;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -87,6 +92,26 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         employeeMapper.insert(employee);
 
+    }
+
+    @Override
+    public PageResult pageQuery(EmployeePageQueryDTO employeePageQueryDTO) {
+
+        PageHelper.startPage(employeePageQueryDTO.getPage(),employeePageQueryDTO.getPageSize());
+
+        Page<Employee> page = employeeMapper.pageQuery(employeePageQueryDTO);
+        long total = page.getTotal();
+        List<Employee> list = page.getResult();
+
+        return new PageResult(total,list);
+    }
+
+    @Override
+    public void setEmeloyeeSatus(Integer status, Long id) {
+
+        Employee employee = Employee.builder().status(status).id(id).build();
+
+        employeeMapper.update(employee);
     }
 
 }

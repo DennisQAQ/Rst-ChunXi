@@ -1,4 +1,4 @@
-sky:
+ChunXi:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     host: 152.67.231.250

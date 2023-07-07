@@ -3,8 +3,10 @@ package com.ChunXi.controller.admin;
 import com.ChunXi.constant.JwtClaimsConstant;
 import com.ChunXi.dto.EmployeeDTO;
 import com.ChunXi.dto.EmployeeLoginDTO;
+import com.ChunXi.dto.EmployeePageQueryDTO;
 import com.ChunXi.entity.Employee;
 import com.ChunXi.properties.JwtProperties;
+import com.ChunXi.result.PageResult;
 import com.ChunXi.result.Result;
 import com.ChunXi.service.EmployeeService;
 import com.ChunXi.utils.JwtUtil;
@@ -13,10 +15,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -41,7 +40,7 @@ public class EmployeeController {
      * @param employeeLoginDTO
      * @return
      */
-    @ApiOperation("员工登录功能")
+    @ApiOperation("员工登录")
     @PostMapping("/login")
     public Result<EmployeeLoginVO> login(@RequestBody EmployeeLoginDTO employeeLoginDTO) {
         log.info("员工登录：{}", employeeLoginDTO);
@@ -79,10 +78,36 @@ public class EmployeeController {
         return Result.success();
     }
 
+    /**
+     * 新增员工
+     * @param employeeDTO
+     * @return
+     */
     @PostMapping
-    @ApiOperation("")
+    @ApiOperation("新增员工")
     public Result save(@RequestBody EmployeeDTO employeeDTO){
         employeeService.save(employeeDTO);
+        return Result.success();
+    }
+
+    /**
+     * 员工分页查询
+     * @param employeePageQueryDTO
+     * @return
+     */
+    @ApiOperation("员工分页查询")
+    @GetMapping("/page")
+    public Result<PageResult> page(EmployeePageQueryDTO employeePageQueryDTO){
+
+        PageResult pageResult = employeeService.pageQuery(employeePageQueryDTO);
+        return Result.success(pageResult);
+    }
+
+    @ApiOperation("修改员工状态")
+    @PostMapping("/status/{status}")
+    public Result setEmployeeStatus(@PathVariable Integer status,Long id){
+
+        employeeService.setEmeloyeeSatus(status,id);
         return Result.success();
     }
 }
