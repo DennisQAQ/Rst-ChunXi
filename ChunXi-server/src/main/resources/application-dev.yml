@@ -6,3 +6,8 @@ ChunXi:
     database: Rst_Haruhiro
     username: root
     password: lijunhaha
+  alioss:
+    endpoint: oss-rg-china-mainland.aliyuncs.com
+    access-key-id: LTAI5tS7gBicU3j3jaQHe5nb
+    access-key-secret: 2DrIgyiA79ZZUPAZRq9T1PNecOb92s
+    bucket-name: harohiro
