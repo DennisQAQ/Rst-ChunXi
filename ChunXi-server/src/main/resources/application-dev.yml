@@ -1,0 +1,8 @@
+sky:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    host: 152.67.231.250
+    port: 3306
+    database: Rst_Haruhiro
+    username: root
+    password: lijunhaha
