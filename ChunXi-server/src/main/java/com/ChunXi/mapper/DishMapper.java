@@ -42,6 +42,7 @@ public interface DishMapper {
 
     /**
      * 根据主键查询数据
+     *
      * @param id
      * @return
      */
@@ -61,4 +62,14 @@ public interface DishMapper {
      */
     @AutoFill(value = OperationType.UPDATE)
     void update(Dish dish);
+
+    /**
+     *动态条件查询菜品
+     * @param dish
+     * @return
+     */
+    List<Dish> list(Dish dish);
+
+    @Select("select d.* from dish d left outer join setmeal_dish s on d.id=s.dish_id where s.setmeal_id=#{id}")
+    List<Dish>getBySetmealId(long id);
 }

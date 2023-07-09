@@ -2,6 +2,7 @@ package com.ChunXi.service;
 
 import com.ChunXi.dto.DishDTO;
 import com.ChunXi.dto.DishPageQueryDTO;
+import com.ChunXi.entity.Dish;
 import com.ChunXi.result.PageResult;
 import com.ChunXi.vo.DishVO;
 
@@ -43,4 +44,11 @@ public interface DishService {
     void updateWithFlavors(DishDTO dishDTO);
 
     void setDishStatus(Integer status,Long id);
+
+    /**
+     * 根据分类id查询菜品
+     * @param categoryId
+     * @return
+     */
+    List<Dish> list(Long categoryId);
 }

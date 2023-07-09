@@ -9,6 +9,5 @@ ChunXi:
   alioss:
     endpoint: oss-rg-china-mainland.aliyuncs.com
     access-key-id: LTAI5tBmT8iHs9x3GeGP5kha
-
     access-key-secret: N3DVG4sBrRhFB6FFuIZ3wgFr3YXKWf
     bucket-name: harohiro

@@ -3,6 +3,7 @@ package com.ChunXi.controller.admin;
 import com.ChunXi.constant.MessageConstant;
 import com.ChunXi.dto.DishDTO;
 import com.ChunXi.dto.DishPageQueryDTO;
+import com.ChunXi.entity.Dish;
 import com.ChunXi.result.PageResult;
 import com.ChunXi.result.Result;
 import com.ChunXi.service.DishService;
@@ -73,7 +74,7 @@ public class DishController {
     @PutMapping
     public Result update(@RequestBody DishDTO dishDTO){
         dishService.updateWithFlavors(dishDTO);
-        return Result.success(MessageConstant.UPDATE_SUCCSES);
+        return Result.success(MessageConstant.UPDATE_SUCCSESS);
     }
 
     @ApiOperation("修改菜品售卖状态")
@@ -82,6 +83,15 @@ public class DishController {
         log.info("id是{}",id);
         dishService.setDishStatus(status,id);
 
-        return Result.success(MessageConstant.UPDATE_SUCCSES);
+        return Result.success(MessageConstant.UPDATE_SUCCSESS);
+    }
+
+    @ApiOperation("根据分类id查询菜品")
+    @GetMapping("/list")
+    public Result<List<Dish>> list( Long categoryId){
+        log.info("id是{}",categoryId);
+
+        List<Dish> list = dishService.list(categoryId);
+        return Result.success(list);
     }
 }
