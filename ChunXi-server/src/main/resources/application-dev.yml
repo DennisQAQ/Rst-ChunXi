@@ -8,6 +8,7 @@ ChunXi:
     password: lijunhaha
   alioss:
     endpoint: oss-rg-china-mainland.aliyuncs.com
-    access-key-id: LTAI5tS7gBicU3j3jaQHe5nb
-    access-key-secret: 2DrIgyiA79ZZUPAZRq9T1PNecOb92s
+    access-key-id: LTAI5tBmT8iHs9x3GeGP5kha
+
+    access-key-secret: N3DVG4sBrRhFB6FFuIZ3wgFr3YXKWf
     bucket-name: harohiro
