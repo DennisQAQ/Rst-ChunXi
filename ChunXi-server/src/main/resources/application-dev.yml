@@ -11,3 +11,8 @@ ChunXi:
     access-key-id: LTAI5tBmT8iHs9x3GeGP5kha
     access-key-secret: N3DVG4sBrRhFB6FFuIZ3wgFr3YXKWf
     bucket-name: harohiro
+  redis:
+    host: 152.67.231.250
+    port: 6379
+    password: root1234
+    database: 10

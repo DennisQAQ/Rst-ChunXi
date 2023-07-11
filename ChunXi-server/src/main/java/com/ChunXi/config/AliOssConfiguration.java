@@ -11,6 +11,9 @@ public class AliOssConfiguration {
     @Bean
     @ConditionalOnMissingBean
     public AliOssUtil AliOssUtil(AliOssProperties aliOssProperties){
-        return new AliOssUtil(aliOssProperties.getEndpoint(), aliOssProperties.getAccessKeyId(), aliOssProperties.getAccessKeySecret(), aliOssProperties.getBucketName());
+        return new AliOssUtil(aliOssProperties.getEndpoint(),
+                aliOssProperties.getAccessKeyId(),
+                aliOssProperties.getAccessKeySecret(),
+                aliOssProperties.getBucketName());
     }
 }
