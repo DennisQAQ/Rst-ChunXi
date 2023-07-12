@@ -1,6 +1,7 @@
 package com.ChunXi.config;
 
 import com.ChunXi.interceptor.JwtTokenAdminInterceptor;
+import com.ChunXi.interceptor.JwtTokenUserInterceptor;
 import com.ChunXi.json.JacksonObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,16 +32,34 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
     @Autowired
     private JwtTokenAdminInterceptor jwtTokenAdminInterceptor;
 
+    @Autowired
+    private JwtTokenUserInterceptor jwtTokenUserInterceptor;
     /**
      * 注册自定义拦截器
      *
      * @param registry
      */
-    protected void addInterceptors(InterceptorRegistry registry) {
-        log.info("开始注册自定义拦截器...");
+    protected void addInterceptorsForAdmin(InterceptorRegistry registry) {
+        log.info("开始注册admin自定义拦截器...");
         registry.addInterceptor(jwtTokenAdminInterceptor)
                 .addPathPatterns("/admin/**")
                 .excludePathPatterns("/admin/employee/login");
+
+
+    }
+
+    /**
+     * 注册自定义拦截器
+     * @param registry
+     */
+    protected void addInterceptorsForUser(InterceptorRegistry registry) {
+
+        log.info("开始注册user自定义拦截器...");
+        //.........
+        registry.addInterceptor(jwtTokenUserInterceptor)
+                .addPathPatterns("/user/**")
+                .excludePathPatterns("/user/user/login")
+                .excludePathPatterns("/user/shop/status");
     }
 
     /**
@@ -99,4 +118,5 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
         converter.setObjectMapper(new JacksonObjectMapper());
         converters.add(0,converter);
     }
+
 }

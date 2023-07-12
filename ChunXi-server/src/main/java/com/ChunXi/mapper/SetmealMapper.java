@@ -5,6 +5,7 @@ import com.ChunXi.dto.SetmealPageQueryDTO;
 import com.ChunXi.entity.Setmeal;
 import com.ChunXi.entity.SetmealDish;
 import com.ChunXi.enumeration.OperationType;
+import com.ChunXi.vo.DishItemVO;
 import com.ChunXi.vo.SetmealVO;
 import com.github.pagehelper.Page;
 import org.apache.ibatis.annotations.Delete;
@@ -69,11 +70,21 @@ public interface SetmealMapper {
     void deleteById(Long setmealId);
 
     /**
-     * 套餐起售停售
-     * @param status
-     * @param id
+     *  动态条件查询套餐
+     * @param setmeal
+     * @return
      */
+   List<Setmeal>list (Setmeal setmeal);
 
+    /**
+     * 根据套餐id查询菜品选项
+     * @param setmealId
+     * @return
+     */
+    @Select("select sd.name, sd.copies, d.image, d.description " +
+            "from setmeal_dish sd left join dish d on sd.dish_id = d.id " +
+            "where sd.setmeal_id = #{setmealId}")
+    List<DishItemVO> getDishItemBySetmealId(Long setmealId);
 }
 
 

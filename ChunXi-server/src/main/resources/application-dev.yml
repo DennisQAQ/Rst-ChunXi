@@ -16,3 +16,6 @@ ChunXi:
     port: 6379
     password: root1234
     database: 10
+  wechat:
+    appid: wx9a88e898fab66cc2
+    secret: e44423a91f56294580cbe991feacbb60

@@ -90,4 +90,6 @@ public class SetmealController {
         setmealService.setSetmealtatus(status,id);
         return Result.success(MessageConstant.UPDATE_SUCCSESS);
     }
+
+    
 }

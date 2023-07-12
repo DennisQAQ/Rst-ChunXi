@@ -17,7 +17,9 @@ spring:
     port: ${ChunXi.redis.port}
     password: ${ChunXi.redis.password}
     database: ${ChunXi.redis.database}
-
+  wechat:
+    appid: ${ChunXi.wechat.appid}
+    secret: ${ChunXi.wechat.secret}
 mybatis:
   #mapper配置文件
   mapper-locations: classpath:mapper/*.xml
@@ -42,6 +44,11 @@ chunxi:
     admin-ttl: 7200000
     # 设置前端传递过来的令牌名称
     admin-token-name: token
+
+    user-secret-key: Dennis
+    user-ttl: 7200000
+    user-token-name: authentication
+
   alioss:
     endpoint: ${endpoint}
     access-key-id: ${access-ke-id}

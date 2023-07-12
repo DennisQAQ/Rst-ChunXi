@@ -14,6 +14,7 @@ import com.ChunXi.mapper.SetmealDishMapper;
 import com.ChunXi.mapper.SetmealMapper;
 import com.ChunXi.result.PageResult;
 import com.ChunXi.service.SetmealService;
+import com.ChunXi.vo.DishItemVO;
 import com.ChunXi.vo.SetmealVO;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -161,5 +162,16 @@ public class SetmealServiceImpl implements SetmealService {
         Setmeal setmeal = Setmeal.builder().status(status).id(id).build();
         setmealMapper.update(setmeal);
 
+    }
+
+    @Override
+    public List<Setmeal> list(Setmeal setmeal) {
+        List<Setmeal> list = setmealMapper.list(setmeal);
+        return list;
+    }
+
+    @Override
+    public List<DishItemVO> getDishItemById(Long id) {
+        return setmealMapper.getDishItemBySetmealId(id);
     }
 }

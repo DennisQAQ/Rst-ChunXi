@@ -38,7 +38,6 @@
         </where>
         order by s.create_time desc
     </select>
-
     <insert id="insertBatch" parameterType="list">
         insert into setmeal_dish
         (setmeal_id,dish_id,name,price,copies)
@@ -47,5 +46,20 @@
             (#{sd.setmealId},#{sd.dishId},#{sd.name},#{sd.price},#{sd.copies})
         </foreach>
     </insert>
+
+    <select id="list" resultType="com.ChunXi.entity.Setmeal" parameterType="Setmeal">
+        select * from setmeal
+        <where>
+            <if test="name != null">
+                and name like concat('%',#{name},'%')
+            </if>
+            <if test="categoryId != null">
+                and category_id = #{categoryId}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+        </where>
+    </select>
 
 </mapper>
