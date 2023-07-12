@@ -39,11 +39,17 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
      *
      * @param registry
      */
-    protected void addInterceptorsForAdmin(InterceptorRegistry registry) {
+    protected void addInterceptors(InterceptorRegistry registry) {
         log.info("开始注册admin自定义拦截器...");
         registry.addInterceptor(jwtTokenAdminInterceptor)
                 .addPathPatterns("/admin/**")
                 .excludePathPatterns("/admin/employee/login");
+            log.info("开始注册user自定义拦截器...");
+            //.........
+            registry.addInterceptor(jwtTokenUserInterceptor)
+                    .addPathPatterns("/user/**")
+                    .excludePathPatterns("/user/user/login")
+                    .excludePathPatterns("/user/shop/status");
 
 
     }
@@ -52,15 +58,15 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
      * 注册自定义拦截器
      * @param registry
      */
-    protected void addInterceptorsForUser(InterceptorRegistry registry) {
-
-        log.info("开始注册user自定义拦截器...");
-        //.........
-        registry.addInterceptor(jwtTokenUserInterceptor)
-                .addPathPatterns("/user/**")
-                .excludePathPatterns("/user/user/login")
-                .excludePathPatterns("/user/shop/status");
-    }
+//    protected void addInterceptorsForUser(InterceptorRegistry registry) {
+//
+//        log.info("开始注册user自定义拦截器...");
+//        //.........
+//        registry.addInterceptor(jwtTokenUserInterceptor)
+//                .addPathPatterns("/user/**")
+//                .excludePathPatterns("/user/user/login")
+//                .excludePathPatterns("/user/shop/status");
+//    }
 
     /**
      * 通过knife4j生成接口文档

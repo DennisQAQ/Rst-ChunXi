@@ -72,7 +72,7 @@ public class SetmealController {
      */
     @ApiOperation("修改套餐")
     @PutMapping
-    @CacheEvict(cacheNames = "setmealCache",key = "#setmealDTO.categoryId")//key: setmealCache::100
+    @CacheEvict(cacheNames = "setmealCache",allEntries = true)
     public Result  update (@RequestBody SetmealDTO setmealDTO){
         setmealService.update(setmealDTO);
         return Result.success();
@@ -80,7 +80,7 @@ public class SetmealController {
 
     @ApiOperation("批量删除套餐")
     @DeleteMapping
-    @CacheEvict(cacheNames = "setmealCache",key = "#setmealDTO.categoryId")//key: setmealCache::100
+    @CacheEvict(cacheNames = "setmealCache",allEntries = true)
     public Result delete(@RequestParam List<Long> ids){
         log.info("要删除的id是{}",ids.toString());
         setmealService.deleteBatch(ids);
@@ -89,6 +89,7 @@ public class SetmealController {
     }
     @ApiOperation("套餐起售停售")
     @PostMapping("/status/{status}")
+    @CacheEvict(cacheNames = "setmealCache",allEntries = true)
     public  Result setSetmealStatus(@PathVariable Integer status,long id){
         log.info("修改的id是{}状态{}",id,status);
         setmealService.setSetmealtatus(status,id);
