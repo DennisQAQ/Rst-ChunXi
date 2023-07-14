@@ -54,3 +54,18 @@ chunxi:
     access-key-id: ${access-ke-id}
     access-key-secret: ${access-key-secret}
     bucket-name: ${bucket-name}
+  wechat:
+    appid: ${Chunxi.wechat.appid}
+    secret: ${Chunxi.wechat.secret}
+    mchid: ${Chunxi.wechat.mchid}
+    mchSerialNo: ${Chunxi.wechat.mchSerialNo}
+    privateKeyFilePath: ${Chunxi.wechat.privateKeyFilePath}
+    apiV3Key: ${Chunxi.wechat.apiV3Key}
+    weChatPayCertFilePath: ${Chunxi.wechat.weChatPayCertFilePath}
+    notifyUrl: ${Chunxi.wechat.notifyUrl}
+    refundNotifyUrl: ${Chunxi.wechat.refundNotifyUrl}
+
+  shop:
+    address: 无锡市滨湖区钱荣路86号
+  baidu:
+    ak: vpSDndeptSLIL1GrIGv8a3La3MSUMIvG

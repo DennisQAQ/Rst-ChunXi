@@ -122,6 +122,13 @@
                 <artifactId>wechatpay-apache-httpclient</artifactId>
                 <version>0.4.8</version>
             </dependency>
+            <!-- alipay -->
+            <dependency>
+                <groupId>com.alipay.sdk</groupId>
+                <artifactId>alipay-sdk-java</artifactId>
+                <version>4.35.132.ALL</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 </project>

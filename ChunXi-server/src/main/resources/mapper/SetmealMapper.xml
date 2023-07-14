@@ -22,6 +22,17 @@
         </set>
         where id=#{id}
     </update>
+    <select id="countByMap" resultType="java.lang.Integer">
+        select count(id) from setmeal
+        <where>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="categoryId != null">
+                and category_id = #{categoryId}
+            </if>
+        </where>
+    </select>
 
     <select id="pageQuery" resultType="com.ChunXi.vo.SetmealVO">
         select s.*,c.name categoryName from setmeal s left outer join  category c on s.category_id = c.id
