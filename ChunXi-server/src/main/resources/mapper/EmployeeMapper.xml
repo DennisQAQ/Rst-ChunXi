@@ -8,7 +8,7 @@
         select * from employee
         <where>
             <if test="name !=null and name != ''">
-                and name like cocat('%',#{name},'%')
+                and name like concat('%',#{name},'%')
             </if>
         </where>
         order by create_time desc
